@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html>
-    <body>
-    <h1>Hola EBC, eso es un documento de Flask</h1>
-    <h6>Aplicación de tareas EBC</h6>
-    <form action="#">
-        <div>
-            <input type="text" placeholder="Nombre de la tarea..."/>
-        </div>
-        <button type="submit">Agregar tarea</button>
+  <body>
+    <h1>Aplicación de tareas EBC</h1>
+    <form action={{url_for('AddNewTask')}} method="POST">
+      <div>
+        <input type="text" name="task_name" placeholder="nombre de la tarea..."/>
+      </div>
+      <button type="submit">Agregar tarea</button>
     </form>
-    </body>
+    <div>
+      <h2>Lista de tareas</h2>
+      <ul>
+        {% for task in todoList %}
+        <li>{{task.id}} {{task.name}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
 </html>
